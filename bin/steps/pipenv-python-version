@@ -10,7 +10,6 @@ if [[ -f $BUILD_DIR/Pipfile ]]; then
         fi
         if [[ -f $BUILD_DIR/Pipfile.lock ]]; then
             echo "Creating runtime.txt from pipfile.lock"
-            set -x
             set +e
             PYTHON=$(jq -r '._meta.requires.python_full_version' "$BUILD_DIR/Pipfile.lock")
             if [[ "$PYTHON" != "null" ]]; then
@@ -27,7 +26,6 @@ if [[ -f $BUILD_DIR/Pipfile ]]; then
                     echo "python-3.6.3" > "$BUILD_DIR/runtime.txt"
                 fi
             fi
-            set +x
 
 
         fi

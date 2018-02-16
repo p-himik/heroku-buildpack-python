@@ -2,6 +2,7 @@
 
 set +e
 runtime-fixer runtime.txt
+echo "Python version from `pwd`/runtime.txt: `cat runtime.txt`"
 PYTHON_VERSION=$(cat runtime.txt)
 
 if [[ $PYTHON_VERSION =~ ^python-2 ]]; then

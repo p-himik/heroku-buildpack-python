@@ -18,6 +18,8 @@ if [ ! "$SKIP_PIP_INSTALL" ]; then
     
     # Measure that we're using pip.
     mcount "tool.pip"
+    echo "Environment when running pip"
+    env
 
     /app/.heroku/python/bin/pip install -r "$BUILD_DIR/requirements.txt" --exists-action=w --src=/app/.heroku/src --disable-pip-version-check --no-cache-dir 2>&1 | tee "$WARNINGS_LOG" | cleanup | indent
     PIP_STATUS="${PIPESTATUS[0]}"
